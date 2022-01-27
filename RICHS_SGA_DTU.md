@@ -13,7 +13,7 @@ restricted to protein-coding genes. Samples were subsetted to the
 contrast between SGA and AGA infants. Smokers (n=2) were removed to
 evaluated non-smoke related impacts of cadmium. The final dataset
 (n=142) differed by maternal ethnicity between SGA and AGA infants.
-Analyses were adjusted for maternal race.
+Analyses were adjusted for maternal race and infant sex.
 
 ## load library
 
@@ -127,7 +127,6 @@ names(counts)<-gsub("X","",names(counts))
 samps<-data.frame(sample_id=coldata_SGA_nosmoke$ID,race=coldata_SGA_nosmoke$Momrace,sex=coldata_SGA_nosmoke$Gender,group=coldata_SGA_nosmoke$BWgroup)
 
 d_SGA <- dmDSdata(counts=counts, samples=samps) 
-methods(class=class(d_SGA))
 
 d_SGA
 #An object of class dmDSdata
@@ -378,3 +377,19 @@ plotProportions(d_SGA, gene_id=top_gene_id, group_variable ="group",group_colors
 ```
 
 ![](RICHS_SGA_DTU_files/figure-gfm/DTU_plots-4.png)<!-- -->
+
+``` r
+#print ORMDL1 plot
+top_gene_id<-grep(top.genes$geneID[top.genes$hgnc_symbol=="ORMDL1"], res$gene_id, perl=TRUE, value=TRUE)
+plotProportions(d_SGA, gene_id=top_gene_id, group_variable ="group",group_colors=c("black","mediumorchid1"),plot_type = "boxplot1")
+```
+
+![](RICHS_SGA_DTU_files/figure-gfm/DTU_plots-5.png)<!-- -->
+
+``` r
+#print LAMTOR4 plot
+top_gene_id<-grep(top.genes$geneID[top.genes$hgnc_symbol=="LAMTOR4"], res$gene_id, perl=TRUE, value=TRUE)
+plotProportions(d_SGA, gene_id=top_gene_id, group_variable ="group",group_colors=c("black","mediumorchid1"),plot_type = "boxplot1")
+```
+
+![](RICHS_SGA_DTU_files/figure-gfm/DTU_plots-6.png)<!-- -->
