@@ -101,7 +101,7 @@ txdf$ntx <- tab[match(txdf$GENEID, names(tab))] #58381 genes, 203835 transcripts
 txdf<-txdf[txdf$GENEID%in%codingSubset,] #19901 genes, 149592 transcripts
 ```
 
-## DRIMSeq SGA vs. AGA
+## DRIMSeq above vs. below median As
 
 ``` r
 #Prepare dataset for DRIMseq
